@@ -3,6 +3,8 @@ Brian Goodwin
 
 School of AI - Midterm assignment (https://www.theschool.ai/courses/take/decentralized-applications/texts/3406499-decentralized-game-midterm-project)
 
+A very simple better game based on the classic game Rock Paper and Scissors.
+
 
 ## Requires 
 - Metamask
@@ -10,6 +12,39 @@ School of AI - Midterm assignment (https://www.theschool.ai/courses/take/decentr
 - Ganache
 - NodeJS
 
+## How To Run
+
+### ethereumjs-testrpc
+
+In a console
+
+cd \rock-paper-sizz\
+
+In the project directory, you can run:
+
+### `node -v`
+### `npm -v`
+
+If either of these commands go unrecognized, visit Nodejs.org and download the appropriate installer. Run it through all of the default options.
+Once finished, close and reload your console and re-run the commands above. They should now provide you with version numbers.
+Next, let's use NPM to install the Ethereumjs-testrpc:
+
+### `npm install -g ethereumjs-testrpc`
+
+Once finished, run the following command to start it:
+
+### `testrpc`
+
+This provides you with 10 different accounts and private keys, along with a local server at localhost:8545.
+
+Leave this window open!
+
+### How to Test the Solidy code using Truffle
+
+cd \rock-paper-sizz\
+truffle.cmd compile
+truffle.cmd migrate 
+truffle.cmd test
 
 
 ## Reference
