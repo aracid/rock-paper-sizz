@@ -1,3 +1,19 @@
+Rock Paper Scissors 
+Brian Goodwin
+
+School of AI - Midterm assignment (https://www.theschool.ai/courses/take/decentralized-applications/texts/3406499-decentralized-game-midterm-project)
+
+
+## Requires 
+- Metamask
+- Truffle
+- Ganache
+- NodeJS
+
+
+
+## Reference
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
