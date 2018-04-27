@@ -45,14 +45,17 @@ Leave this window open!
 
 ### How to Test the Solidy code using Truffle (Optional)
 
-cd \rock-paper-sizz\
-truffle.cmd compile
-truffle.cmd migrate 
-truffle.cmd test
+cd %EXTRACTEDPATH%\rock-paper-sizz\
+`truffle.cmd compile`
+
+`truffle.cmd migrate`
+
+`truffle.cmd test`
 
 
-## Running React App
+## Running The App
 
+cd %EXTRACTEDPATH%\rock-paper-sizz\
 ### `npm start`
 This will open a website that shows the game.
 
