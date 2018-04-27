@@ -4,37 +4,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Rock Paper Scissors</title>
+    <title>Rock Paper Scissors DAPP</title>
   </head>
+
   <body>
+    <!--
+      Very little happens in here, as most of the magic happens in the App.js
+    -->
+
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
-</html>
+  <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script>
+
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+    }
+    //
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+    var contractABI = web3.eth.contract([{"constant":true,"inputs":[],"name":"thisGame","outputs":[{"name":"id","type":"uint256"},{"name":"playerName","type":"bytes32"},{"name":"humanWin","type":"bool"},{"name":"winCount","type":"uint256"},{"name":"etherWon","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"allGames","outputs":[{"name":"id","type":"uint256"},{"name":"playerName","type":"bytes32"},{"name":"humanWin","type":"bool"},{"name":"winCount","type":"uint256"},{"name":"etherWon","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"_playerName","type":"bytes32"},{"name":"_humanWin","type":"bool"},{"name":"_winCount","type":"uint256"},{"name":"_etherWon","type":"uint256"}],"name":"addGame","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getAllGames","outputs":[{"name":"","type":"bytes32[]"},{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"didHumanWin","type":"bool"},{"name":"etherWon","type":"uint256"}],"name":"gameResult","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getWinCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]);
+    var EtherContract = contractABI.at('0xd942ab433bcdecd39e838152bc1f9bab3b7d6b19');
+    
+    console.log(EtherContract);
+
+  </script>
+  
+  </html>

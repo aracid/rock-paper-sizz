@@ -1,20 +1,26 @@
+import Web3 from 'web3';
 import React, { Component } from 'react';
-import logo from './Rock-paper-scissors.svg';
+import './App.css';
 
+import logo from './Rock-paper-scissors.svg';
 import rock from './rock.jpg';
 import paper from './paper.jpg';
 import scissors from './scissors.jpg';
-
 import pressStart from './press-start-2.png';
 import rockPaperScissors from './rock-paper-scissors.png';
-
 import playAgain from './Play_Again.png';
 
-
-import './App.css';
-
+//var web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider("http://localhost:7545"));
+//var contractABI = [{"constant":true,"inputs":[],"name":"thisGame","outputs":[{"name":"id","type":"uint256"},{"name":"playerName","type":"bytes32"},{"name":"humanWin","type":"bool"},{"name":"winCount","type":"uint256"},{"name":"etherWon","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"allGames","outputs":[{"name":"id","type":"uint256"},{"name":"playerName","type":"bytes32"},{"name":"humanWin","type":"bool"},{"name":"winCount","type":"uint256"},{"name":"etherWon","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"_playerName","type":"bytes32"},{"name":"_humanWin","type":"bool"},{"name":"_winCount","type":"uint256"},{"name":"_etherWon","type":"uint256"}],"name":"addGame","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getAllGames","outputs":[{"name":"","type":"bytes32[]"},{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"didHumanWin","type":"bool"},{"name":"etherWon","type":"uint256"}],"name":"gameResult","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getWinCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]; // CHANGE THIS TO YOUR ABI
+//var test = contractABI.at('0xd942ab433bcdecd39e838152bc1f9bab3b7d6b19');
 
 class App extends Component {
+  
+  componentWillMount()
+  {
+    
+  }
+  
   constructor(props){
     super(props)
     this.state = {
@@ -24,12 +30,23 @@ class App extends Component {
        playing : false,
        madeBet : false,
        minimumBet: 0.05,
-       randNumber : 1
-    }
- }
+       randNumber : 1,
+       currentContractAddress : '', 
+       }
 
+       
+       console.log("BRIAN")
+       
+       
+       //web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider("http://localhost:7545"));
+     //  var contractABI = [{"constant":true,"inputs":[],"name":"thisGame","outputs":[{"name":"id","type":"uint256"},{"name":"playerName","type":"bytes32"},{"name":"humanWin","type":"bool"},{"name":"winCount","type":"uint256"},{"name":"etherWon","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"allGames","outputs":[{"name":"id","type":"uint256"},{"name":"playerName","type":"bytes32"},{"name":"humanWin","type":"bool"},{"name":"winCount","type":"uint256"},{"name":"etherWon","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"_playerName","type":"bytes32"},{"name":"_humanWin","type":"bool"},{"name":"_winCount","type":"uint256"},{"name":"_etherWon","type":"uint256"}],"name":"addGame","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getAllGames","outputs":[{"name":"","type":"bytes32[]"},{"name":"","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"didHumanWin","type":"bool"},{"name":"etherWon","type":"uint256"}],"name":"gameResult","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getWinCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]; // CHANGE THIS TO YOUR ABI
+     //  console.log(contractABI)
+     //  var etherContract = contractABI.at('0x25df543faf623d5999d5b025af47d98f36c9b7fa')
+     //  console.log(etherContract)
+     
+       
+  } 
  
-
  pressStartButton = () => {
   console.log('PressStart Was Clicked');
   this.setState({playing:true});
@@ -162,7 +179,7 @@ ResetGame = () =>
     }
 
     function PlayAgain(props) {
-      if (props.madeBet === true) return <button onClick={props.pressMe} > <img  src={playAgain} className="App-play-again" /> </button>
+      if (props.madeBet === true) return <button onClick={props.pressMe} > <img src={playAgain} className="App-play-again" alt="Play Again"/> </button>
 
       return null;
     }
@@ -173,7 +190,8 @@ ResetGame = () =>
         <img src={rockPaperScissors} className="App" alt="rockPaperScissors" />          
         </header>
 
-        <div> <b className="App"> Your Account : {this.state.owner} </b> </div>
+        
+        <div> <b className="App"> Current Contract Address : {this.state.currentContractAddress} </b> </div>
         <div> <b className="App"> Your Balance : {this.state.currentBalance} ether </b> </div>
 
         <div style={divStyle}>
@@ -193,8 +211,8 @@ ResetGame = () =>
             
             <PlayAgain madeBet={this.state.madeBet} pressMe={this.ResetGame}/>
 
-            <div style={divStyle}><i>Only working with the Ropsten Test Network</i></div>
-            <div><i>Your vote will be reflected when the next block is mined</i></div>  
+            <div style={divStyle}><i>Only working with the Ganache and Metafox Test Network</i></div>
+            
       </div>
       
     );

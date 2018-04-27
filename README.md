@@ -10,19 +10,29 @@ A very simple better game based on the classic game Rock Paper and Scissors whic
 
 ![alt text](docs/rockPaperScissorsGame.png "Rock Paper Scissors")
 
+
+Couldnt get the smart contract to interface with the App.js
+
+
 ## Requires 
+This requires that you have 
 - Metamask
 - Truffle
 - Ganache
 - NodeJS
+- React
 
 ## How To Run
 
-### ethereumjs-testrpc
+## Running The App
 
-In a console
+cd %EXTRACTEDPATH%\rock-paper-sizz\
+### `npm start`
+This will open a website that shows the game.
 
-cd \rock-paper-sizz\
+
+
+### Requirements
 
 In the project directory, you can run:
 
@@ -46,6 +56,7 @@ Leave this window open!
 ### How to Test the Solidy code using Truffle (Optional)
 
 cd %EXTRACTEDPATH%\rock-paper-sizz\
+
 `truffle.cmd compile`
 
 `truffle.cmd migrate`
@@ -53,11 +64,6 @@ cd %EXTRACTEDPATH%\rock-paper-sizz\
 `truffle.cmd test`
 
 
-## Running The App
-
-cd %EXTRACTEDPATH%\rock-paper-sizz\
-### `npm start`
-This will open a website that shows the game.
 
 ## Reference
 
